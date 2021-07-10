@@ -1,0 +1,76 @@
+#pageDiv{
+    width: 1200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+    margin-top: 20px;
+    background-color: blue;
+}
+
+#titleDiv{
+    text-align: center;
+    font-family: sans-serif;
+    background-color: whitesmoke;
+}
+
+#navigationDiv{
+    height: 50px;
+    background-color: yellow;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#gotoAddPage{
+    box-shadow: -3px 3px black;
+}
+
+#searchDiv{
+    height: 100px;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#dataDiv{
+    height: 500px;
+    background-color: green;
+}
+
+#titleForm{
+    min-width: 150px;
+    max-width: 200px;
+}
+
+
+#authorForm{
+    min-width: 150px;
+    max-width: 200px;
+    
+}
+
+#publishedDateForm{
+    min-width: 100px;
+   
+}
+
+.col{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items:baseline;
+    background-color: whitesmoke;
+}
+
+#myTable{
+    margin: auto;
+}
+
+th{
+    width: 200px;
+}

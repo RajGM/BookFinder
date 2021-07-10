@@ -1,23 +1,108 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Find Book</title>
-  <meta name="description" content="Homepage for Book finder application">
-  <meta name="RajGM" content="BookFinder">
+    <title>Find Book</title>
+    <meta name="description" content="Homepage for Book finder application">
+    <meta name="RajGM" content="BookFinder">
 
-  <link rel="icon" href="/assets/favicon.png">
-  <!--Icons made by https://www.flaticon.com/authors/srip... -->
-  
+    <link rel="icon" href="/assets/favicon.png">
+    <!--Icons made by https://www.flaticon.com/authors/srip... -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <!-- your content here... -->
-  Index.html page is working 
-  <script src="/javaScript/indexpage.js"></script>
-  <link rel="stylesheet" type="text/css" href="/visualization/indexpage.css" />
+    <!-- your content here... -->
+
+    <div id="pageDiv">
+
+        <div id="titleDiv">
+            <h3>
+                Book Finder
+            </h3>
+        </div>
+
+        <div id="navigationDiv">
+            <div style="background-color: aqua;">
+                Go To <button id="gotoAddPage" onclick="window.location.href='/addBook'">Add Book</button> Page
+            </div>
+        </div>
+
+        <div id="searchDiv">
+
+            <div class="col">
+
+                <div>
+                    <input id="titleForm" type="search" placeholder="Title" class="form-control me-2"
+                        aria-label="Search">
+                </div>
+
+                <div>
+                    <button id="titleButton" class="btn btn-outline-success" type="submit">Find By
+                        Title</button>
+                </div>
+
+                <div>
+                    <input id="authorForm" class="form-control me-2" type="search" placeholder="Author"
+                        aria-label="Search">
+                </div>
+
+                <div>
+                    <button id="authorButton" class="btn btn-outline-success" type="submit">Find By
+                        Author</button>
+                </div>
+
+                <div>
+                    <input id="publishedDateForm" class="form-control me-2" type="date" aria-label="Search">
+                </div>
+
+                <div>
+                    <button id="publishedDateButton" class="btn btn-outline-success" type="submit">Find by
+                        published date</button>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <button id="selectDataset1" class="btn btn-default btn-warning" type="submit">Original Dataset
+                    Selected</button>
+
+                <button id="selectDataset2" class="btn btn-default btn-success" type="submit" disabled>Select Filtered
+                    Dataset</button>
+
+                <button id="resetAllButton" class="btn btn-default btn-success" type="submit">Reset All Dataset and
+                    forms</button>
+
+            </div>
+
+        </div>
+
+        <div id="dataDiv">
+            <table id="myTable" class="table-bordered">
+                <tr id="row1">
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Published Date</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="/javaScript/indexpage.js"></script>
+    <link rel="stylesheet" type="text/css" href="/visualization/indexpage.css" />
 </body>
+
 </html>

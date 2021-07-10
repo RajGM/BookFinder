@@ -1,0 +1,28 @@
+{
+  "name": "book-finder",
+  "version": "1.0.0",
+  "description": "Book finder application which can store and retrive\u001b[D\u001b[De\u001b[C\u001b[C\u001b[ve infomation about books from a database and serve data through webpage",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RajGM/BookFinder.git"
+  },
+  "author": "RajGM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RajGM/BookFinder/issues"
+  },
+  "homepage": "https://github.com/RajGM/BookFinder#readme"
+}
