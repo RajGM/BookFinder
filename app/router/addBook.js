@@ -37,12 +37,12 @@ router.post('/', async (req, res) => {
         mongoClient.close();
         res.status(200).json("Book exists already");
     }else{
-        await addBookHelper.insertBook(profileValues.username,profileValues.password,profileValues.email,mongoClient);
+        await addBookHelper.insertBook(bookInfo.title,bookInfo.author,bookInfo.date,mongoClient);
         mongoClient.close();
         res.status(200).json("Book information inserted to database successfully");
     }
 
-    res.status(200).json("Request received");
+    //res.status(200).json("Request received");
 });
 
 module.exports = router;

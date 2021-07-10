@@ -1,7 +1,7 @@
 {
   "name": "book-finder",
   "version": "1.0.0",
-  "description": "Book finder application which can store and retrive\u001b[D\u001b[De\u001b[C\u001b[C\u001b[ve infomation about books from a database and serve data through webpage",
+  "description": "Book finder application which can store and retrive infomation about books from a database and serve data through webpage",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",

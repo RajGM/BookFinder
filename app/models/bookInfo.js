@@ -1,21 +1,20 @@
 //Schema definition for Book
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
-    Title:{
+    title:{
         type:String,
         require:true
     },
-    Author:{
-        type:[{type:String}],
+    author:{
+        type:String,
         require:true
     },
-    PublishedDate:{
+    publishedDate:{
         type:Date,
         require:true
     },
 });
 
-module.exports = bookInfo = mongoose.model("BookSchema",BookSchema);
+module.exports = BookInfo = mongoose.model("bookSchema",BookSchema);
