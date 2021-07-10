@@ -22,8 +22,11 @@ app.use(bodyparser.urlencoded({
   app.use(bodyparser.json());
 
 // Router listens on / (root)
-var route = require('./router');
+const route = require('./router');
 app.use('/', route);
+
+const addBook = require('./app/router/addBook');
+app.use('/addBook',addBook); 
 
 //starting server
 var server = app.listen(app.get('port'), function () {

@@ -1,0 +1,55 @@
+#pageDiv{
+    width: 1200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+    margin-top: 20px;
+    background-color: whitesmoke;
+}
+
+#titleDiv{
+    text-align: center;
+    font-family: sans-serif;
+    background-color: whitesmoke;
+}
+
+#navigationDiv{
+    height: 50px;
+    background-color: yellow;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.inputDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+input{
+    height: 22px;
+    font-size: 17px;
+    font-family: cursive;
+    width: 200px;
+}
+
+#addBookDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttonShadow{
+    box-shadow: -3px 3px;
+}
+
+#addBookButton{
+    margin-bottom: 10px;
+}
