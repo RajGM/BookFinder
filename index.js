@@ -18,18 +18,25 @@ app.use(express.static(__dirname + '/public'));
 //Middleware for bodyparser
 app.use(bodyparser.urlencoded({
     extended: true
-  }));
-  app.use(bodyparser.json());
+}));
+app.use(bodyparser.json());
+
+const db = `${process.env.mongoURL}${process.env.mongoUserName}:${process.env.mongoPassword}${process.env.mongoRestUrl}`;
+
+mongoose
+    .connect(db,{  useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log("Connected Successfully"))
+    .catch(err => console.log(err));
 
 // Router listens on / (root)
 const route = require('./router');
 app.use('/', route);
 
 const addBook = require('./app/router/addBook');
-app.use('/addBook',addBook); 
+app.use('/addBook', addBook);
 
 //starting server
 var server = app.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
     console.log("You application is running. You should be able to connect to it on http://localhost:" + app.get('port'));
-  });
+});

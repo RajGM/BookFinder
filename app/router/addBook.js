@@ -17,6 +17,7 @@ router.get('/', function (req, res) {
 // @access  PUBLIC
 router.post('/', async (req, res) => {
     //post book info to database
+    res.status(200).json("Request received");
 });
 
 module.exports = router;
