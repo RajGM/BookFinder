@@ -7,6 +7,8 @@ let authorButton = document.getElementById("authorButton");
 let publishedDateForm = document.getElementById("publishedDateForm");
 let publishedDateButton = document.getElementById("publishedDateButton");
 let resetAllButton = document.getElementById("resetAllButton");
+let selectDataset1 = document.getElementById("selectDataset1");
+let selectDataset2 = document.getElementById("selectDataset2");
 
 let myTable = document.getElementById("myTable");
 let row1 = document.getElementById("row1");
@@ -20,17 +22,14 @@ let currentDataset;
 
 axios.get('/getData')
     .then(function (response) {
-        // handle success
         dataArray = response.data;
         maxRow = Object.keys(dataArray).length;
         fillTable();
+        selectDataset1.style.border = "3px solid black";
     })
     .catch(function (error) {
         // handle error
         console.log(error);
-    })
-    .then(function () {
-        // always executed
     });
 
 function fillTable() {
@@ -92,7 +91,16 @@ titleButton.onclick = function () {
     }
 
     let tempEntries = 0;
-    for (const [key, value] of Object.entries(currentDataset)) {
+    
+    const sortedObject = currentDataset.sort(function(x,y){
+        if(x.title<y.title){
+            return -1;
+        }else if(x.title>=y.title){
+            return 1;
+        }
+    });
+    
+    for (const [key, value] of Object.entries(sortedObject)) {
 
         if (value.title.toLowerCase().includes(titleForm.value.toLowerCase())) {
             tempdata[tempEntries] = value;
@@ -113,6 +121,8 @@ titleButton.onclick = function () {
         //display message
     }
 
+    selectDataset2.disabled = false;
+
 }
 
 authorButton.onclick = function () {
@@ -130,8 +140,16 @@ authorButton.onclick = function () {
         tempdata = {};
     }
 
+    const sortedObject = currentDataset.sort(function(x,y){
+        if(x.author<y.author){
+            return -1;
+        }else if(x.author>=y.author){
+            return 1;
+        }
+    });
+
     let tempEntries = 0;
-    for (const [key, value] of Object.entries(currentDataset)) {
+    for (const [key, value] of Object.entries(sortedObject)) {
 
         if (value.author.toLowerCase().includes(authorForm.value.toLowerCase())) {
             tempdata[tempEntries] = value;
@@ -152,6 +170,7 @@ authorButton.onclick = function () {
         //display message
     }
 
+    selectDataset2.disabled = false;
 
 }
 
@@ -159,14 +178,10 @@ resetAllButton.onclick = function () {
 
     titleForm.value = "";
     authorForm.value = "";
-
-    if (selectedDatasetValue == 0) {
-        currentDataset = dataArray;
-        tempdata = {};
-    } else {
-        currentDataset = tempdata;
-        tempdata = {};
-    }
+    selectedDatasetValue = 0;
+    selectDataset2.disabled = true;
+    selectDataset2.style.border = "";
+    selectDataset1.style.border = "3px solid black";
 
     deleteTable();
     totalRowBuild=0;
@@ -212,4 +227,18 @@ publishedDateButton.onclick = function(){
         //display message
     }
 
+    selectDataset2.disabled = false;
+
+}
+
+selectDataset1.onclick = function(){
+    selectDataset2.style.border = "";
+    selectDataset1.style.border = "3px solid black";
+    selectedDatasetValue = 0;
+}
+
+selectDataset2.onclick = function(){
+    selectDataset1.style.border = "";
+    selectDataset2.style.border = "3px solid black";
+    selectedDatasetValue = 1;
 }
