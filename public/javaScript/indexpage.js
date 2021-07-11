@@ -76,13 +76,6 @@ function rebuildTable(tempdata) {
 
 }
 
-/*
-setTimeout(   function(){
-    deleteTable(totalRowBuild);
-}     , 5000);
-
-*/
-
 titleButton.onclick = function () {
 
     if (titleForm.value == "" || titleForm.value.length <= 0) {
@@ -179,5 +172,44 @@ resetAllButton.onclick = function () {
     totalRowBuild=0;
     maxRow = Object.keys(dataArray).length;
     fillTable();
+
+}
+
+publishedDateButton.onclick = function(){
+   
+    if (publishedDateForm.value == "" || publishedDateForm.value.length <= 0) {
+        //show red box
+        return;
+    }
+
+    if (selectedDatasetValue == 0) {
+        currentDataset = dataArray;
+        tempdata = {};
+    } else {
+        currentDataset = tempdata;
+        tempdata = {};
+    }
+   
+    let tempEntries = 0;
+    for (const [key, value] of Object.entries(currentDataset)) {
+
+        if ( value.publishedDate == publishedDateForm.value ) {
+            tempdata[tempEntries] = value;
+            tempEntries++;
+        }
+
+    }
+
+    maxRow = Object.keys(tempdata).length;
+
+    if (maxRow == 0) {
+        deleteTable();
+        totalRowBuild = 0;
+        //display message    
+    } else {
+        deleteTable();
+        rebuildTable(tempdata);
+        //display message
+    }
 
 }
