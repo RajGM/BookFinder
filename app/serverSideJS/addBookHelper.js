@@ -7,25 +7,34 @@ async function checkIfBookExists(author, title, mongoClient) {
     //this function is not working as expected
     //fix this function later
     let dataArr;
-    let dataArr2;
 
     try {
         const db = mongoClient.db("bookfinder").collection("bookdata");
-        
-        dataArr = await db.find( title )
+
+        dataArr = await db.find()
             .toArray();
-            //{ title }, { projection: { "_id": 0 }
-        dataArr2 = await db.find( author )
-            .toArray();
+
     }
     catch (err) {
         console.log(err);
     }
 
-    if (Object.keys(dataArr).length === 0 && Object.keys(dataArr2).length === 0) {
-        return "notExists"
-    } else {
+    let existsFlag = false;
+
+    for (let i = 0; i < dataArr.length; i++) {
+
+        if (dataArr[i]["title"].toLowerCase() == title.toLowerCase() && dataArr[i]["author"].toLowerCase() == author.toLowerCase()) {
+            console.log("Entity Found");
+            existsFlag = true;
+            break;
+        }
+
+    }
+
+    if (existsFlag) {
         return "exists";
+    } else {
+        return "notExists";
     }
 
 }
