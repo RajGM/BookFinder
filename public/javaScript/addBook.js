@@ -7,18 +7,10 @@ let addBookButton = document.getElementById('addBookButton');
 
 addBookButton.onclick = function(){
 
-  const dateArr = publishedDate.value.split("-");
- 
-  let publishedDateArray = {
-      "year":dateArr[0],
-      "month":dateArr[1],
-      "day":dateArr[2]
-  }
-
   axios.post('/addBook', {
     title: title.value,
     author: author.value,
-    publishedDate:publishedDateArray
+    publishedDate:publishedDate.value
   })
   .then(function (response) {
     console.log(response.data);
@@ -26,7 +18,5 @@ addBookButton.onclick = function(){
   .catch(function (error) {
     console.log(error);
   });
-
-  console.log("publishedDateArray:",publishedDateArray);
 
 }

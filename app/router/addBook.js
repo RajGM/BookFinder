@@ -19,7 +19,6 @@ router.get('/', function (req, res) {
 // @desc    for adding book info to the database
 // @access  PUBLIC
 router.post('/', async (req, res) => {
-    //post book info to database
     const bookInfo = { title: "", author: "" };
 
     if (req.body.title != "" && req.body.author != "" && req.body.publishedDate != "" ) {
@@ -33,7 +32,7 @@ router.post('/', async (req, res) => {
     let mongoClient = await databaseConnectionHelper.connectionToDB();
     let bookStatus = await addBookHelper.checkIfBookExists(bookInfo.title,bookInfo.author,mongoClient);
     //bookStatus=="exists"
-    if(true){
+    if(false){
         mongoClient.close();
         res.status(200).json("Books exists already");
     }else{

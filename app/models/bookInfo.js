@@ -12,7 +12,7 @@ const BookSchema = new Schema({
         require:true
     },
     publishedDate:{
-        type:Date,
+        type:String,
         require:true
     },
 });
