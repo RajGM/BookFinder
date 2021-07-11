@@ -37,8 +37,15 @@
     justify-content: space-evenly;
 }
 
+#messageDiv{
+    height: auto;
+    background-color: cornsilk;
+    text-align: center;
+    display: none;
+}
+
 #dataDiv{
-    height: 500px;
+    height: auto;
     background-color: green;
 }
 
@@ -74,3 +81,4 @@
 th{
     width: 200px;
 }
+
