@@ -35,6 +35,9 @@ app.use('/', route);
 const addBook = require('./app/router/addBook');
 app.use('/addBook', addBook);
 
+const invalidRoute = require('./app/router/invalidRoute');
+app.use('*', invalidRoute);
+
 //starting server
 var server = app.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
