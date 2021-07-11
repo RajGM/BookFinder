@@ -3,8 +3,8 @@ const express = require('express');
 const router = new express.Router();
 var path = require('path');
 
-const addBookHelper = require('./../serverSideJs/addBookHelper');
-const databaseConnectionHelper = require('./../serverSideJs/databaseConnectionHelper');
+const addBookHelper = require('./../serverSideJS/addBookHelper');
+const databaseConnectionHelper = require('./../serverSideJS/databaseConnectionHelper');
 
 // @type    GET
 //@route    /register
