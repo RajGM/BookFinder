@@ -32,8 +32,8 @@ router.post('/', async (req, res) => {
 
     let mongoClient = await databaseConnectionHelper.connectionToDB();
     let bookStatus = await addBookHelper.checkIfBookExists(bookInfo.title,bookInfo.author,mongoClient);
-
-    if(bookStatus=="exists"){
+    //bookStatus=="exists"
+    if(false){
         mongoClient.close();
         res.status(200).json("Book exists already");
     }else{
@@ -42,7 +42,6 @@ router.post('/', async (req, res) => {
         res.status(200).json("Book information inserted to database successfully");
     }
 
-    //res.status(200).json("Request received");
 });
 
 module.exports = router;
