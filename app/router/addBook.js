@@ -20,12 +20,12 @@ router.get('/', function (req, res) {
 // @access  PUBLIC
 router.post('/', async (req, res) => {
     //post book info to database
-    const bookInfo = { title: "", author: "" , date:""};
+    const bookInfo = { title: "", author: "" };
 
-    if (req.body.username != "" && req.body.password != "" && req.body.email != "") {
+    if (req.body.title != "" && req.body.author != "" && req.body.publishedDate != "" ) {
         bookInfo.title = req.body.title;
         bookInfo.author = req.body.author;
-        bookInfo.date = req.body.date;
+        bookInfo.date = req.body.publishedDate;
     }else{
         res.status(200).json("Input Error");
     }
@@ -33,9 +33,9 @@ router.post('/', async (req, res) => {
     let mongoClient = await databaseConnectionHelper.connectionToDB();
     let bookStatus = await addBookHelper.checkIfBookExists(bookInfo.title,bookInfo.author,mongoClient);
     //bookStatus=="exists"
-    if(false){
+    if(true){
         mongoClient.close();
-        res.status(200).json("Book exists already");
+        res.status(200).json("Books exists already");
     }else{
         await addBookHelper.insertBook(bookInfo.title,bookInfo.author,bookInfo.date,mongoClient);
         mongoClient.close();

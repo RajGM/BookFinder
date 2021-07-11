@@ -9,9 +9,6 @@ async function checkIfBookExists(author, title, mongoClient) {
     let dataArr;
     let dataArr2;
 
-    console.log("checkIfBookExists Values::");
-    console.log("author:"+author+"   "+"title:"+title);
-
     try {
         const db = mongoClient.db("bookfinder").collection("bookdata");
         
@@ -24,9 +21,6 @@ async function checkIfBookExists(author, title, mongoClient) {
     catch (err) {
         console.log(err);
     }
-
-    console.log("dataArr:",dataArr);
-    console.log("dataArr2:",dataArr2);
 
     if (Object.keys(dataArr).length === 0 && Object.keys(dataArr2).length === 0) {
         return "notExists"
