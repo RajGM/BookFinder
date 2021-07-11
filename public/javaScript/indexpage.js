@@ -92,15 +92,7 @@ titleButton.onclick = function () {
 
     let tempEntries = 0;
     
-    const sortedObject = currentDataset.sort(function(x,y){
-        if(x.title<y.title){
-            return -1;
-        }else if(x.title>=y.title){
-            return 1;
-        }
-    });
-    
-    for (const [key, value] of Object.entries(sortedObject)) {
+    for (const [key, value] of Object.entries(currentDataset)) {
 
         if (value.title.toLowerCase().includes(titleForm.value.toLowerCase())) {
             tempdata[tempEntries] = value;
@@ -140,16 +132,8 @@ authorButton.onclick = function () {
         tempdata = {};
     }
 
-    const sortedObject = currentDataset.sort(function(x,y){
-        if(x.author<y.author){
-            return -1;
-        }else if(x.author>=y.author){
-            return 1;
-        }
-    });
-
     let tempEntries = 0;
-    for (const [key, value] of Object.entries(sortedObject)) {
+    for (const [key, value] of Object.entries(currentDataset)) {
 
         if (value.author.toLowerCase().includes(authorForm.value.toLowerCase())) {
             tempdata[tempEntries] = value;

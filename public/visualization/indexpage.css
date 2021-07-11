@@ -6,18 +6,16 @@
     justify-content: space-evenly;
     margin: auto;
     margin-top: 20px;
-    background-color: blue;
+    background-color: whitesmoke;
 }
 
 #titleDiv{
     text-align: center;
     font-family: sans-serif;
-    background-color: whitesmoke;
 }
 
 #navigationDiv{
     height: 50px;
-    background-color: yellow;
     text-align: center;
     font-size: 20px;
     display: flex;
@@ -31,22 +29,13 @@
 
 #searchDiv{
     height: 100px;
-    background-color: pink;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-#messageDiv{
-    height: auto;
-    background-color: cornsilk;
-    text-align: center;
-    display: none;
-}
-
 #dataDiv{
     height: auto;
-    background-color: green;
 }
 
 #titleForm{

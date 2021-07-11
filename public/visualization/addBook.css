@@ -17,7 +17,6 @@
 
 #navigationDiv{
     height: 50px;
-    background-color: yellow;
     text-align: center;
     font-size: 20px;
     display: flex;
@@ -34,8 +33,9 @@
 }
 
 input{
-    height: 22px;
-    font-size: 17px;
+    height: 25px;    
+    font-size: 15px;
+    margin-bottom: 5px;
     font-family: cursive;
     width: 200px;
 }
@@ -52,4 +52,12 @@ input{
 
 #addBookButton{
     margin-bottom: 10px;
+}
+
+#messageDiv{
+    text-align: center;
+}
+
+h3{
+    margin-top: 20px;
 }

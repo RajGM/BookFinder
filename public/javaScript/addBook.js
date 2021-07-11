@@ -4,6 +4,7 @@ let title = document.getElementById('title');
 let author = document.getElementById('author');
 let publishedDate = document.getElementById('publishedDate');
 let addBookButton = document.getElementById('addBookButton');
+let messageDiv = document.getElementById('messageDiv');
 
 addBookButton.onclick = function(){
 
@@ -13,10 +14,10 @@ addBookButton.onclick = function(){
     publishedDate:publishedDate.value
   })
   .then(function (response) {
-    console.log(response.data);
+    messageDiv.innerHTML = response.data;
   })
   .catch(function (error) {
-    console.log(error);
+    messageDiv.innerHTML = error;
   });
 
 }
