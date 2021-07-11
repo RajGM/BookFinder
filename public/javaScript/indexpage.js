@@ -6,6 +6,7 @@ let authorForm = document.getElementById("authorForm");
 let authorButton = document.getElementById("authorButton");
 let publishedDateForm = document.getElementById("publishedDateForm");
 let publishedDateButton = document.getElementById("publishedDateButton");
+let resetAllButton = document.getElementById("resetAllButton");
 
 let myTable = document.getElementById("myTable");
 let row1 = document.getElementById("row1");
@@ -22,7 +23,6 @@ axios.get('/getData')
         // handle success
         dataArray = response.data;
         maxRow = Object.keys(dataArray).length;
-        console.log(response.data);
         fillTable();
     })
     .catch(function (error) {
@@ -34,16 +34,16 @@ axios.get('/getData')
     });
 
 function fillTable() {
-    for (let i = 1; i <= maxRow; i++) {
+    for (let i = 0; i < maxRow; i++) {
         let currRow = myTable.insertRow(totalRowBuild + 1);
         for (let j = 0; j < 3; j++) {
             let currCell = currRow.insertCell(j);
             if (j == 0) {
-                currCell.innerHTML = dataArray[i - 1]["title"];
+                currCell.innerHTML = dataArray[i]["title"];
             } else if (j == 1) {
-                currCell.innerHTML = dataArray[i - 1]["author"];
+                currCell.innerHTML = dataArray[i]["author"];
             } else if (j == 2) {
-                currCell.innerHTML = dataArray[i - 1]["publishedDate"];
+                currCell.innerHTML = dataArray[i]["publishedDate"];
             }
         }
         totalRowBuild++;
@@ -51,37 +51,7 @@ function fillTable() {
     }
 }
 
-titleButton.onclick = function () {
-
-    if (titleForm.value == "" || titleForm.value.length <= 0) {
-        //show red box
-        return;
-    }
-
-    if (selectedDatasetValue == 0) {
-        currentDataset = dataArray;
-    } else {
-        currentDataset = tempdata;
-    }
-
-    let tempEntries = 0;
-    for (const [key, value] of Object.entries(currentDataset)) {
-
-        if(  value.title.toLowerCase().includes(titleForm.value.toLowerCase()) ){
-            tempdata[tempEntries] = value;
-            tempEntries++;
-        }
-        
-    }
-
-    maxRow = Object.keys(tempdata).length;
-    deleteTable(totalRowBuild);
-    rebuildTable(tempdata);
-
-}
-
-
-function deleteTable(totalRowBuild) {
+function deleteTable() {
     for (let i = 0; i < totalRowBuild; i++) {
         myTable.deleteRow(1);
     }
@@ -112,3 +82,102 @@ setTimeout(   function(){
 }     , 5000);
 
 */
+
+titleButton.onclick = function () {
+
+    if (titleForm.value == "" || titleForm.value.length <= 0) {
+        //show red box
+        return;
+    }
+
+    if (selectedDatasetValue == 0) {
+        currentDataset = dataArray;
+        tempdata = {};
+    } else {
+        currentDataset = tempdata;
+        tempdata = {};
+    }
+
+    let tempEntries = 0;
+    for (const [key, value] of Object.entries(currentDataset)) {
+
+        if (value.title.toLowerCase().includes(titleForm.value.toLowerCase())) {
+            tempdata[tempEntries] = value;
+            tempEntries++;
+        }
+
+    }
+
+    maxRow = Object.keys(tempdata).length;
+
+    if (maxRow == 0) {
+        deleteTable();
+        totalRowBuild = 0;
+        //display message    
+    } else {
+        deleteTable();
+        rebuildTable(tempdata);
+        //display message
+    }
+
+}
+
+authorButton.onclick = function () {
+
+    if (authorForm.value == "" || authorForm.value.length <= 0) {
+        //show red box
+        return;
+    }
+
+    if (selectedDatasetValue == 0) {
+        currentDataset = dataArray;
+        tempdata = {};
+    } else {
+        currentDataset = tempdata;
+        tempdata = {};
+    }
+
+    let tempEntries = 0;
+    for (const [key, value] of Object.entries(currentDataset)) {
+
+        if (value.author.toLowerCase().includes(authorForm.value.toLowerCase())) {
+            tempdata[tempEntries] = value;
+            tempEntries++;
+        }
+
+    }
+
+    maxRow = Object.keys(tempdata).length;
+
+    if (maxRow == 0) {
+        deleteTable();
+        totalRowBuild = 0;
+        //display message    
+    } else {
+        deleteTable();
+        rebuildTable(tempdata);
+        //display message
+    }
+
+
+}
+
+resetAllButton.onclick = function () {
+
+    titleForm.value = "";
+    authorForm.value = "";
+
+    if (selectedDatasetValue == 0) {
+        currentDataset = dataArray;
+        tempdata = {};
+    } else {
+        currentDataset = tempdata;
+        tempdata = {};
+    }
+
+    deleteTable();
+    totalRowBuild=0;
+    maxRow = Object.keys(dataArray).length;
+    fillTable();
+
+}
